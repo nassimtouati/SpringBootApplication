@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+<div th:replace="fragments/header :: menu"></div>
+
+<script type="text/javascript" src="/webjars/chartjs/2.7.0/Chart.bundle.min.js"></script>
+
+<div class="container">
+    <canvas id="myChart" width="400" height="170"></canvas>
+    <script type="text/javascript" src="/js/employees_decile.js"></script>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

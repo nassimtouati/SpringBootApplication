@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header-css">
+</head>
+<body>
+
+<div th:replace="fragments/header :: menu"></div>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Hire Date</th>
+                <th>Job</th>
+                <th>Salary</th>
+                <th>Commission</th>
+                <th>Manager Id</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee,iter : ${employees}">
+                <td th:text="${iter.index+1}">N/A</td>
+                <td th:text="${employee.firstName}">N/A</td>
+                <td th:text="${employee.lastName}">N/A</td>
+                <td th:text="${employee.email}">N/A</td>
+                <td th:text="${employee.phoneNumber}">N/A</td>
+                <td th:text="${employee.hireDate}">N/A</td>
+                <td th:text="${employee.job.jobTitle}">N/A</td>
+                <td th:text="${employee.salary}">N/A</td>
+                <td th:text="${employee.commissionPct}">N/A</td>
+                <td th:text="${employee.managerId}">N/A</td>
+                <td th:text="${employee.department.departmentName}">N/A</td>
+                <td class="actions-col">
+                    <span sec:authorize="hasAnyAuthority('AD_WRITE_PRIVILEGE', 'AC_WRITE_PRIVILEGE', 'FI_WRITE_PRIVILEGE')">
+                        <a th:href="@{/employees/edit/__${employee.employeeId}__}" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-edit"></span> Edit</a>
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

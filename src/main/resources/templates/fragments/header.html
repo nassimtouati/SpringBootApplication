@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:fragment="header-css">
+    <meta charset="UTF-8"/>
+    <title>Human Resources App</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css"/>
+    <script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:fragment="menu">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Human Resources</a>
+            </div>
+            <div class="collapse navbar-collapse" id="app-navbar">
+                <ul class="nav navbar-nav">
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE', 'AC_READ_PRIVILEGE', 'FI_READ_PRIVILEGE')">
+                        <a href="/jobs">Jobs</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE', 'AC_READ_PRIVILEGE', 'FI_READ_PRIVILEGE')">
+                        <a href="/employees">Employees</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE', 'AC_READ_PRIVILEGE', 'FI_READ_PRIVILEGE')">
+                        <a href="/departments">Departments</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE', 'AC_READ_PRIVILEGE', 'FI_READ_PRIVILEGE', 'SA_READ_PRIVILEGE')">
+                        <a href="/regions">Regions</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE', 'AC_READ_PRIVILEGE', 'FI_READ_PRIVILEGE', 'SA_READ_PRIVILEGE')">
+                        <a href="/countries">Countries</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE', 'AC_READ_PRIVILEGE', 'FI_READ_PRIVILEGE', 'SA_READ_PRIVILEGE')">
+                        <a href="/locations">Locations</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE')">
+                        <a href="/employees/salaries">Salaries Graph</a>
+                    </li>
+                    <li sec:authorize="hasAnyAuthority('AD_READ_PRIVILEGE')">
+                        <a href="/employees/deciles">Salaries Decile Graph</a>
+                    </li> 
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+                    <li sec:authorize="isAuthenticated()" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span> <span sec:authentication="name"></span> <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/profile">Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
