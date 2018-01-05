@@ -29,7 +29,7 @@ public class SwaggerConfig {
 	                "MASTER 2 Données et systèmes connectés",
 	                "1.0",
 	                "Terms of service",
-	                new Contact("Nassim TOUATI - Xavier NAUNAY", "https://mootse.telecom-st-etienne.fr/pluginfile.php/24561/mod_resource/content/3/springbootlab.pdf", "nassim.tweti@gmail.com"),
+	                new Contact("Nassim TOUATI", "https://mootse.telecom-st-etienne.fr/pluginfile.php/24561/mod_resource/content/3/springbootlab.pdf", "nassim.tweti@gmail.com"),
 	               "Apache License Version 2.0",
 	                "https://www.apache.org/licenses/LICENSE-2.0");
 	        return apiInfo;
